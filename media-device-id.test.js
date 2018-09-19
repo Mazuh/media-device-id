@@ -36,7 +36,19 @@ describe('when the main function is called', () => {
     const realLabel = 'FaceTime HD Camera';
     const invalidId = 'an-invalid-id-here';
     const realId = '2060bf50ab9c29c12598bf4eafeafa71d4837c667c7c172bb4407ec6c5150206';
-    expect(assureMediaInputId(realLabel, invalidId)).resolves.toEqual(realId);
+    expect(assureMediaInputId(realLabel, invalidId))
+      .resolves.toEqual(realId);
+  });
+
+  test('error is throwed if both label and ids are useless to assure', () => {
+    navigator
+      .mediaDevices
+      .enumerateDevices
+      = jest.fn(() => Promise.resolve(resolvedEnumeratedMediaDevices));
+    const invalidLabel = 'Not a real device';
+    const invalidId = 'an-also-invalid-id';
+    expect(assureMediaInputId(invalidLabel, invalidId))
+      .rejects.toEqual('Could not assure device');
   });
 });
 
