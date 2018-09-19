@@ -4,7 +4,8 @@
   "description": "Assure retrieving your correct media device ID using browser's WebRTC API (very useful to handle Safari issue which changes the devices IDs after route transitions or page reloadings).",
   "main": "media-device-id.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "tdd": "jest --bail --watch"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/Mazuh/media-device-id/issues"
   },
-  "homepage": "https://github.com/Mazuh/media-device-id#readme"
+  "homepage": "https://github.com/Mazuh/media-device-id#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
 }
