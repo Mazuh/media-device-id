@@ -74,12 +74,22 @@ describe('when the main function for input id assurance is called', () => {
   });
 
   test('only input devices shall be returned', () => {
-    navigator .mediaDevices .enumerateDevices = jest.fn(() => Promise.resolve([
+    navigator.mediaDevices.enumerateDevices = jest.fn(() => Promise.resolve([
       { deviceId: 'fake-id', kind: 'audiooutput', label: '' },
       { deviceId: 'fake-id', kind: 'crazyio', label: '' },
     ]));
     expect(assureMediaInputId('', 'fake-id'))
       .rejects.toEqual('Could not assure device, not found by label nor id');
+  });
+
+  test('dont silence navigator original errors', () => {
+    const errorFromNavigator = new Error('Mocked error from navigator');
+    navigator
+      .mediaDevices
+      .enumerateDevices
+      = jest.fn(() => Promise.reject(errorFromNavigator));
+    expect(assureMediaInputId('no-op', 'no-op'))
+      .rejects.toEqual(String(errorFromNavigator));
   });
 });
 
