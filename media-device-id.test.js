@@ -1,6 +1,6 @@
 const assureMediaInputId = require('media-device-id').assureMediaInputId;
 
-describe('when the main function is called', () => {
+describe('when the main function for input id assurance is called', () => {
   const resolvedEnumeratedMediaDevicesWithoutLabels = [
     {"deviceId":"default","kind":"audioinput","label":"","groupId":"4b198c199061233e5598cedd756d9ee8283ada51251c1496867d5638357e45da"},
     {"deviceId":"9f1496a1a513f585ff31c905d4c6d7e2e3666ff4549c02737f8e3b50c78f6f07","kind":"audioinput","label":"","groupId":"4b198c199061233e5598cedd756d9ee8283ada51251c1496867d5638357e45da"},
@@ -71,6 +71,15 @@ describe('when the main function is called', () => {
     const realId = 'b81a871b37a252b3bd328cd34f2c3c6894b5c974bcac7d9c1b16b9ae70057e56';
     expect(assureMediaInputId(noLabel, realId))
       .resolves.toEqual(realId);
+  });
+
+  test('only input devices shall be returned', () => {
+    navigator .mediaDevices .enumerateDevices = jest.fn(() => Promise.resolve([
+      { deviceId: 'fake-id', kind: 'audiooutput', label: '' },
+      { deviceId: 'fake-id', kind: 'crazyio', label: '' },
+    ]));
+    expect(assureMediaInputId('', 'fake-id'))
+      .rejects.toEqual('Could not assure device, not found by label nor id');
   });
 });
 

@@ -1,6 +1,7 @@
-
 exports.assureMediaInputId = async (label, possibleId) => {
-  const devices = await navigator.mediaDevices.enumerateDevices();
+  const deviceIsInput = device => device.kind.indexOf('input') > -1;
+  const devices = await navigator.mediaDevices.enumerateDevices()
+    .then(devices => devices.filter(deviceIsInput));
 
   const hasAnAvailableLabel = device => device && device.label;
   const labelsAreAvailable = devices.every(hasAnAvailableLabel);
