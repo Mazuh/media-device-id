@@ -1,4 +1,4 @@
-const assureMediaDeviceId = require('media-device-id').assureMediaDeviceId;
+const assureMediaInputId = require('media-device-id').assureMediaInputId;
 
 test('sanity check', () => {
   expect(3+7).toBe(10);
@@ -40,7 +40,7 @@ describe('when the main function is called', () => {
     const realLabel = 'FaceTime HD Camera';
     const invalidId = 'an-invalid-id-here';
     const realId = '2060bf50ab9c29c12598bf4eafeafa71d4837c667c7c172bb4407ec6c5150206';
-    expect(assureMediaDeviceId(realLabel, invalidId)).equal(realId);
+    expect(assureMediaInputId(realLabel, invalidId)).resolves.toEqual(realId);
   });
 });
 
