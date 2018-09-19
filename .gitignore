@@ -42,3 +42,6 @@ typings/
 # dotenv environment variables file
 .env
 
+# vim temp file
+*.swp
+
