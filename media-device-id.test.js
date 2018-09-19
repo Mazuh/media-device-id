@@ -1,9 +1,5 @@
 const assureMediaInputId = require('media-device-id').assureMediaInputId;
 
-test('sanity check', () => {
-  expect(3+7).toBe(10);
-});
-
 describe('when the main function is called', () => {
   const resolvedEnumeratedMediaDevicesWithoutLabels = [
     {"deviceId":"default","kind":"audioinput","label":"","groupId":"4b198c199061233e5598cedd756d9ee8283ada51251c1496867d5638357e45da"},
@@ -32,7 +28,7 @@ describe('when the main function is called', () => {
     }
   });
 
-  test('video device id is being assured even if ', () => {
+  test('video device id is being assured even if id fails', () => {
     navigator
       .mediaDevices
       .enumerateDevices
