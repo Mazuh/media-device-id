@@ -91,5 +91,14 @@ describe('when the main function for input id assurance is called', () => {
     expect(assureMediaInputId('no-op', 'no-op'))
       .rejects.toEqual(String(errorFromNavigator));
   });
+
+  test('if provided, the default param will be returned instead of throwing an error', () => {
+    navigator
+      .mediaDevices
+      .enumerateDevices
+      = jest.fn(() => Promise.resolve(resolvedEnumeratedMediaDevices));
+    expect(assureMediaInputId('no-op', 'no-op', 'none'))
+      .resolves.toEqual('none');
+  });
 });
 
