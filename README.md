@@ -31,7 +31,7 @@ assureMediaInputId(constantLabel, outdatedId).then((currentId) => {
 
 ## Some expected behaviours
 
-All tested by [./media-device-id.test.js](./media-device-id.test.js)):
+All tested by [./media-device-id.test.js](./media-device-id.test.js):
 - if both error is throwed if both label and ids are useless to assure a correct id
 - when labels are unavailable, throws error if id fails
 - only input devices shall be returned
