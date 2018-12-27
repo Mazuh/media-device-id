@@ -37,3 +37,7 @@ export async function assureMediaInputId(label, possibleId, fallbackId) {
 
   return foundByIdOnly ? foundByIdOnly.deviceId : foundByIdOrLabel.deviceId;
 }
+
+if (window !== undefined) {
+  window.assureMediaInputId = assureMediaInputId;
+}
