@@ -1,4 +1,4 @@
-exports.assureMediaInputId = async (label, possibleId, fallbackId) => {
+export async function assureMediaInputId(label, possibleId, fallbackId) {
   const deviceIsInput = device => device.kind.indexOf('input') > -1;
   const result = await navigator.mediaDevices.enumerateDevices()
     .then(devices => ({ ok: devices.filter(deviceIsInput) }))
@@ -36,5 +36,4 @@ exports.assureMediaInputId = async (label, possibleId, fallbackId) => {
   }
 
   return foundByIdOnly ? foundByIdOnly.deviceId : foundByIdOrLabel.deviceId;
-};
-
+}

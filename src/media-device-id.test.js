@@ -1,4 +1,4 @@
-const assureMediaInputId = require('media-device-id').assureMediaInputId;
+import { assureMediaInputId } from './media-device-id';
 
 describe('when the main function for input id assurance is called', () => {
   const resolvedEnumeratedMediaDevicesWithoutLabels = [
