@@ -45,3 +45,5 @@ typings/
 # vim temp file
 *.swp
 
+# distribution bundle
+dist/
