@@ -1,6 +1,6 @@
 {
   "name": "media-device-id",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Assure retrieving your correct media device ID using browser's WebRTC API (very useful to handle Safari issue which changes the devices IDs after route transitions or page reloadings).",
   "main": "./src/media-device-id.js",
   "scripts": {
